@@ -99,7 +99,7 @@ body{
     top:0;
     left:-330px;
 
-    width:320px;
+    width:280px;
     height:100vh;
 
     background:white;
@@ -394,7 +394,7 @@ ul li{
 
     color:white;
 
-    font-size:40px;
+    font-size:26px;
 
     line-height:1.2;
 
@@ -429,8 +429,8 @@ ul li{
 
     color:white;
 
-    font-size:20px;
-
+    font-size:15px;
+  line-height:1.6;
 }
 
 
@@ -534,15 +534,8 @@ ul li{
    DECORATIONS HERO
 =========================== */
 
-
 .coin{
- 
-    position:absolute;
-
-    width:115px;
-
-    opacity:.95;
-
+    display:none;
 }
 
 
@@ -683,7 +676,7 @@ ul li{
 
     justify-content:center;
 
-    min-width:320px;
+    min-width:220px;
 
 }
 
@@ -981,7 +974,6 @@ flex-direction:column;
     }
 
 
-
     /* HEADER */
 
 
@@ -992,7 +984,17 @@ flex-direction:column;
         padding:0 15px;
 
     }
+.header-buttons{
+    gap:8px;
+}
 
+.header-buttons .login,
+.header-buttons .signup{
+    width:90px;
+    height:36px;
+    padding:0;
+    font-size:12px;
+}
 
 
     .menu{
