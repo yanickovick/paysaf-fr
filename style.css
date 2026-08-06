@@ -969,7 +969,10 @@ flex-direction:column;
 
 
 @media (max-width:700px){
-
+   
+.logo-container{
+    margin-left:0;
+}
 
     body{
 
