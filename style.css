@@ -1,82 +1,40 @@
-/* =====================================
-   ETAPE 1/5
-   BASE + HEADER RESPONSIVE
-===================================== */
-
-
 /* ===========================
    BASE
 =========================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-
 *{
-
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family:'Poppins',sans-serif;
-
 }
-
-
-html{
-
-    scroll-behavior:smooth;
-
-}
-
 
 body{
-
     background:#fff;
     overflow-x:hidden;
     padding-top:80px;
-
 }
-
-
-img{
-
-    max-width:100%;
-    display:block;
-
-}
-
-
-button,
-input,
-select,
-textarea{
-
-    font-family:'Poppins',sans-serif;
-
-}
-
 
 
 /* ===========================
    HEADER
 =========================== */
 
-
 .topbar{
 
     position:fixed;
-
     top:0;
     left:0;
 
     width:100%;
     height:80px;
 
-    background:white;
+    background:#fff;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     padding:0 35px;
@@ -84,131 +42,181 @@ textarea{
     box-shadow:0 1px 8px rgba(0,0,0,.08);
 
     z-index:1000;
-
+}
+/* Boutons du header */
+.header-buttons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+.menu-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
 }
 
 
-
-/* ===========================
-   MENU BUTTON
-=========================== */
-
+/* Bouton ouvrir menu */
 
 .btn{
-
     background:transparent;
-
     border:none;
-
     outline:none;
-
-    padding:8px;
-
+    padding:10px;
     font-size:30px;
-
     cursor:pointer;
-
 }
 
+/* Fond sombre */
+#overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:rgba(0,0,0,.4);
 
-
-/* ===========================
-   LOGO
-=========================== */
-
-
-.logo-container{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-}
-
-
-.logo{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-}
-
-
-.logo img{
-
-    width:42px;
-
-    height:42px;
-
-    object-fit:contain;
-
-}
-
-
-
-.logo-container h2{
-
-    color:#000;
-
-    font-size:22px;
-
-    font-weight:700;
-
-}
-
-
-
-/* ===========================
-   HEADER BUTTONS
-=========================== */
-
-
-.header-buttons{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-
-
-
-.login,
-.signup{
-
-    height:38px;
-
-    padding:0 18px;
-
-    border-radius:8px;
-
-    font-size:14px;
-
-    cursor:pointer;
+    opacity:0;
+    visibility:hidden;
 
     transition:.3s;
 
+    z-index:900;
 }
 
 
+#overlay.active{
+    opacity:1;
+    visibility:visible;
+}
 
-.login{
+
+/* Menu gauche */
+#sidebar{
+
+    position:fixed;
+
+    top:0;
+    left:-330px;
+
+    width:280px;
+    height:100vh;
 
     background:white;
 
-    border:2px solid #ddd;
+    transition:.4s;
 
-    color:#111;
+    padding:20px;
+
+    box-shadow:3px 0 10px rgba(0,0,0,.2);
+
+    display:flex;
+    flex-direction:column;
+
+    z-index:1000;
+}
+
+
+#sidebar.active{
+    left:0;
+}
+
+
+/* Entête */
+.menu-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
 }
 
+
+.menu-header h2{
+
+    font-size:32px;
+
+}
+
+
+#closeMenu{
+
+    font-size:35px;
+    cursor:pointer;
+
+}
+
+
+/* Séparateurs */
+hr{
+
+    margin:20px 0;
+    border:none;
+    height:1px;
+    background:#ddd;
+
+}
+
+
+/* Liste */
+ul{
+
+    list-style:none;
+
+}
+
+
+ul li{
+
+    display:flex;
+
+    justify-content:flex-start;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px 0;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+
+
+/* Flèches devant */
+.arrow{
+
+    font-size:30px;
+
+}
+
+
+/* Titre non cliquable */
+.title{
+
+    font-size:20px;
+
+    color:#555;
+
+    margin-bottom:20px;
+
+}
+
+
+/* Pays */
+.country{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:auto;
+}
+
+.flag{
+    width:24px;
+    height:18px;
+}
 
 
 .signup{
@@ -219,34 +227,74 @@ textarea{
 
     border:none;
 
-}
+    padding:15px;
 
+    border-radius:6px;
 
+    font-size:18px;
 
-.login:hover{
-
-    background:#f5f5f5;
-
-}
-
-
-
-.signup:hover{
-
-    background:#0036c9;
+    cursor:pointer;
 
 }
 
 
+.login{
 
-/* ===========================
-   LANGUAGE SELECT
-=========================== */
+    background:white;
+
+    border:2px solid #000;
+
+    padding:15px;
+
+    border-radius:6px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+
+
+
+.logo-container{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-left:140px;
+
+}
+
+.logo{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+}
+
+.logo img{
+
+    width:42px;
+    height:42px;
+    object-fit:contain;
+    display:block;
+
+}
+
+.logo-container h2{
+    color:black;
+    font-size:22px;
+    font-weight:700;
+}
+
+
 
 
 .language-select{
 
-    height:40px;
+    height:46px;
 
     padding:0 12px;
 
@@ -254,157 +302,61 @@ textarea{
 
     border:2px solid #ddd;
 
-    background:white;
+    background:#fff;
 
-    font-size:14px;
+    font-size:15px;
+
+}
+
+
+.login-btn,
+.signup-btn{
+
+    width:50px;
+    height:36px;
+
+    border-radius:8px;
+
+    font-size:10px;
+
+    font-weight:400;
+
+    cursor:pointer;
+
+}
+.login-btn:disabled,
+.signup-btn:disabled{
+
+    cursor: default;
+    pointer-events: none;
+
+}
+
+
+.login-btn{
+
+    background:#fff;
+
+    border:2px solid #ddd;
+
+}
+
+
+
+.signup-btn{
+
+    background:#1d46ff;
+
+    color:white;
+
+    border:none;
 
 }
 
 
 
 /* ===========================
-   OVERLAY
-=========================== */
-
-
-#overlay{
-
-    position:fixed;
-
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    height:100vh;
-
-    background:rgba(0,0,0,.45);
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:.3s;
-
-    z-index:900;
-
-}
-
-
-
-#overlay.active{
-
-    opacity:1;
-
-    visibility:visible;
-
-}
-
-
-
-/* ===========================
-   SIDEBAR MENU
-=========================== */
-
-
-#sidebar{
-
-    position:fixed;
-
-    top:0;
-
-    left:-300px;
-
-    width:280px;
-
-    height:100vh;
-
-    background:white;
-
-    padding:25px;
-
-    transition:.3s;
-
-    z-index:1100;
-
-    overflow-y:auto;
-
-}
-
-
-
-#sidebar.active{
-
-    left:0;
-
-}
-
-
-
-.menu-header h2{
-
-    font-size:26px;
-
-    margin-bottom:20px;
-
-}
-
-
-
-#sidebar ul{
-
-    list-style:none;
-
-}
-
-
-
-#sidebar ul li{
-
-    font-size:17px;
-
-    padding:15px 0;
-
-    border-bottom:1px solid #eee;
-
-}
-
-
-
-.arrow{
-
-    font-size:20px;
-
-}
-
-
-
-.country{
-
-    font-size:16px;
-
-}
-
-
-
-.flag{
-
-    width:20px;
-
-    height:15px;
-
-    display:inline-block;
-
-}
-/* =====================================
-   ETAPE 2/5
-   HERO + FORMULAIRE + DECORATIONS
-===================================== */
-
-
-/* ===========================
-   HERO SECTION
+   HERO
 =========================== */
 
 
@@ -424,21 +376,13 @@ textarea{
 
     overflow:hidden;
 
-    padding:60px 20px;
-
 }
 
 
 
 .content{
 
-    width:100%;
-
-    max-width:900px;
-
     text-align:center;
-
-    position:relative;
 
     z-index:5;
 
@@ -446,37 +390,24 @@ textarea{
 
 
 
-/* TITRE PRINCIPAL */
-
 .content h1{
 
     color:white;
 
-    font-size:42px;
+    font-size:26px;
 
-    line-height:1.25;
+    line-height:1.2;
 
     font-weight:700;
 
 }
-
-
-
 .content h2{
-
-    color:white;
-
-    font-size:28px;
-
-    font-weight:500;
-
-    margin:20px 0;
-
+    color: white;
+    font-size: 28px;
+    font-weight: 500;
+    margin: 20px 0;
 }
 
-
-
-/* BARRE SEPARATION */
 
 .separator{
 
@@ -494,26 +425,18 @@ textarea{
 
 
 
-/* DESCRIPTION */
-
 .content p{
 
     color:white;
 
-    font-size:16px;
-
-    line-height:1.7;
-
-    max-width:700px;
-
-    margin:auto;
-
+    font-size:15px;
+  line-height:1.6;
 }
 
 
 
 /* ===========================
-   SEARCH BOX
+   INPUT 
 =========================== */
 
 
@@ -524,8 +447,6 @@ textarea{
     display:flex;
 
     justify-content:center;
-
-    align-items:center;
 
     gap:14px;
 
@@ -539,17 +460,15 @@ textarea{
 
     width:400px;
 
-    height:45px;
+    height:40px;
 
     border:none;
 
     border-radius:8px;
 
-    padding:0 20px;
+    padding:0 22px;
 
-    font-size:15px;
-
-    outline:none;
+    font-size:14px;
 
 }
 
@@ -557,9 +476,9 @@ textarea{
 
 .search-box button{
 
-    width:110px;
+    width:100px;
 
-    height:45px;
+    height:40px;
 
     border:none;
 
@@ -569,7 +488,7 @@ textarea{
 
     color:white;
 
-    font-size:17px;
+    font-size:18px;
 
     font-weight:600;
 
@@ -590,14 +509,15 @@ textarea{
 
 
 /* ===========================
-   MESSAGE
+   MESSAGE 
 =========================== */
 
 
-.message,
-#message{
+.message{
 
     width:100%;
+
+    min-height:25px;
 
     margin-top:25px;
 
@@ -605,25 +525,17 @@ textarea{
 
     color:#ff0000;
 
-    font-size:17px;
+    font-size:18px;
 
     font-weight:600;
 
 }
-
-
-
 /* ===========================
-   HERO DECORATIONS
+   DECORATIONS HERO
 =========================== */
 
-
 .coin{
-
-    position:absolute;
-
     display:none;
-
 }
 
 
@@ -659,95 +571,6 @@ textarea{
 
 
 /* ===========================
-   HERO MOBILE
-=========================== */
-
-
-@media(max-width:700px){
-
-
-    .hero{
-
-        min-height:auto;
-
-        padding:60px 20px;
-
-    }
-
-
-
-    .content h1{
-
-        font-size:28px;
-
-        line-height:1.3;
-
-    }
-
-
-
-    .content h2{
-
-        font-size:22px;
-
-    }
-
-
-
-    .content p{
-
-        font-size:15px;
-
-    }
-
-
-
-    .search-box{
-
-        flex-direction:column;
-
-        width:100%;
-
-        gap:12px;
-
-        margin-top:35px;
-
-    }
-
-
-
-    .search-box input{
-
-        width:100%;
-
-        max-width:340px;
-
-        height:48px;
-
-    }
-
-
-
-    .search-box button{
-
-        width:100%;
-
-        max-width:340px;
-
-        height:48px;
-
-    }
-
-
-
-}
-/* =====================================
-   ETAPE 3/5
-   APPLICATION SECTION
-===================================== */
-
-
-/* ===========================
    APPLICATION SECTION
 =========================== */
 
@@ -764,7 +587,7 @@ textarea{
 
     gap:60px;
 
-    padding:70px 8%;
+    padding:50px 8%;
 
     flex-wrap:wrap;
 
@@ -772,16 +595,11 @@ textarea{
 
 
 
-/* ===========================
-   TEXTE APPLICATION
-=========================== */
-
-
 .app-left{
 
     flex:1;
 
-    min-width:300px;
+    min-width:320px;
 
 }
 
@@ -809,15 +627,10 @@ textarea{
 
     font-size:20px;
 
-    line-height:1.8;
+    line-height:1,8;
 
 }
 
-
-
-/* ===========================
-   STORE BUTTONS
-=========================== */
 
 
 .store-buttons{
@@ -825,8 +638,6 @@ textarea{
     margin-top:40px;
 
     display:flex;
-
-    align-items:center;
 
     gap:20px;
 
@@ -839,10 +650,6 @@ textarea{
 .store-buttons img{
 
     height:60px;
-
-    width:auto;
-
-    cursor:pointer;
 
     transition:.3s;
 
@@ -858,9 +665,7 @@ textarea{
 
 
 
-/* ===========================
-   IMAGE TELEPHONE
-=========================== */
+/* IMAGE TELEPHONE */
 
 
 .app-right{
@@ -871,9 +676,7 @@ textarea{
 
     justify-content:center;
 
-    align-items:center;
-
-    min-width:250px;
+    min-width:220px;
 
 }
 
@@ -886,146 +689,8 @@ textarea{
     max-width:100%;
 
 }
-
-
-
 /* ===========================
-   TABLETTE
-=========================== */
-
-
-@media(max-width:1000px){
-
-
-    .app-section{
-
-        padding:60px 5%;
-
-        gap:40px;
-
-    }
-
-
-
-    .app-left h2{
-
-        font-size:40px;
-
-    }
-
-
-
-    .app-left p{
-
-        font-size:18px;
-
-    }
-
-
-
-    .app-right img{
-
-        width:380px;
-
-    }
-
-
-}
-
-
-
-/* ===========================
-   MOBILE
-=========================== */
-
-
-@media(max-width:700px){
-
-
-    .app-section{
-
-        flex-direction:column;
-
-        text-align:center;
-
-        padding:55px 20px;
-
-        gap:35px;
-
-    }
-
-
-
-    .app-left{
-
-        min-width:auto;
-
-        width:100%;
-
-    }
-
-
-
-    .app-left h2{
-
-        font-size:30px;
-
-    }
-
-
-
-    .app-left p{
-
-        font-size:16px;
-
-        line-height:1.7;
-
-    }
-
-
-
-    .store-buttons{
-
-        justify-content:center;
-
-        gap:15px;
-
-    }
-
-
-
-    .store-buttons img{
-
-        height:50px;
-
-    }
-
-
-
-    .app-right{
-
-        width:100%;
-
-    }
-
-
-
-    .app-right img{
-
-        width:270px;
-
-    }
-
-
-}
-/* =====================================
-   ETAPE 4/5
-   FOOTER COMPLET
-===================================== */
-
-
-/* ===========================
-   FOOTER PRINCIPAL
+   FOOTER
 =========================== */
 
 
@@ -1035,43 +700,38 @@ textarea{
 
     color:white;
 
-    padding:80px 8% 25px;
-
-    overflow:hidden;
+    padding:200px 8% 20px;
 
 }
 
 
-
-/* ===========================
-   FOOTER CONTAINER
-=========================== */
-
-
-.footer-container{
-
+.footer-container{ 
     display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.2fr; 
+    gap:10px; position: relative; 
+    top: -50px;
+ }
+.footer-column{ 
+display:flex; 
+flex-direction:column;
+ }
+.footer-image{
+    justify-self:end;
+    align-self:start;
+}
 
-    grid-template-columns:2fr 1fr 1fr 1.2fr;
-
-    gap:40px;
-
-    align-items:start;
-
+.footer-image img{
+    display:block;
+    width:450px;
+    height:auto;
 }
 
 
+.footer-logo{
 
-/* ===========================
-   COLONNES FOOTER
-=========================== */
+    font-size:38px;
 
-
-.footer-column{
-
-    display:flex;
-
-    flex-direction:column;
+    margin-bottom:20px;
 
 }
 
@@ -1083,9 +743,7 @@ textarea{
 
     line-height:1.8;
 
-    margin-bottom:25px;
-
-    font-size:15px;
+    margin-bottom:30px;
 
 }
 
@@ -1093,11 +751,9 @@ textarea{
 
 .footer-column h3{
 
-    font-size:22px;
+    font-size:24px;
 
     margin-bottom:25px;
-
-    color:white;
 
 }
 
@@ -1122,51 +778,6 @@ textarea{
     color:#7fa6ff;
 
 }
-
-
-
-/* ===========================
-   LOGO FOOTER
-=========================== */
-
-
-.footer-logo{
-
-    font-size:38px;
-
-    font-weight:700;
-
-    margin-bottom:20px;
-
-}
-
-
-
-/* ===========================
-   IMAGE FOOTER
-=========================== */
-
-
-.footer-image{
-
-    justify-self:end;
-
-}
-
-
-
-.footer-image img{
-
-    width:450px;
-
-    max-width:100%;
-
-    height:auto;
-
-}
-
-
-
 /* ===========================
    RESEAUX SOCIAUX
 =========================== */
@@ -1251,8 +862,6 @@ textarea{
 
     width:180px;
 
-    max-width:100%;
-
     cursor:pointer;
 
     transition:.3s;
@@ -1286,18 +895,28 @@ textarea{
 
     color:#cfd5ff;
 
-    font-size:14px;
-
 }
-
-
-
 /* ===========================
-   TABLETTE FOOTER
+   RESPONSIVE TABLETTE
 =========================== */
 
 
-@media(max-width:1000px){
+@media (max-width:1000px){
+
+
+    .content h1{
+
+        font-size:45px;
+
+    }
+
+
+    .search-box input{
+
+        width:400px;
+
+    }
+
 
 
     .footer-container{
@@ -1310,9 +929,25 @@ textarea{
 
 
 
-    .footer-image{
+    .app-section{
 
-        justify-self:center;
+        padding:70px 5%;
+
+    }
+
+
+
+    .app-left h2{
+
+        font-size:40px;
+
+    }
+
+
+
+    .app-right img{
+
+        width:350px;
 
     }
 
@@ -1322,18 +957,308 @@ textarea{
 
 
 /* ===========================
-   MOBILE FOOTER
+   RESPONSIVE TELEPHONE
 =========================== */
 
 
-@media(max-width:700px){
+@media (max-width:700px){
+   
+.logo-container{
+    margin-left:0;
+}
+
+    body{
+
+        padding-top:70px;
+
+    }
+
+
+    /* HEADER */
+
+
+    .topbar{
+
+        height:70px;
+
+        padding:0 15px;
+
+    }
+.header-buttons{
+    gap:8px;
+}
+
+.header-buttons .login,
+.header-buttons .signup{
+    width:90px;
+    height:36px;
+    padding:0;
+    font-size:12px;
+}
+
+
+    .menu{
+
+        font-size:25px;
+
+    }
+
+
+
+    .logo-container h2{
+
+        font-size:16px;
+
+    }
+
+
+
+    .buttons{
+
+        gap:5px;
+
+    }
+
+
+
+    .language-select{
+
+        display:none;
+
+    }
+
+
+
+    .login-btn,
+    .signup-btn{
+
+        width:75px;
+
+        height:36px;
+
+        font-size:13px;
+
+    }
+
+
+
+
+    /* HERO */
+
+
+    .hero{
+
+        min-height:auto;
+
+        padding:70px 20px;
+
+    }
+
+
+
+    .content h1{
+
+        font-size:32px;
+
+        line-height:1.3;
+
+    }
+
+
+
+    .content p{
+
+        font-size:16px;
+
+        margin-top:20px;
+
+    }
+
+
+
+    .separator{
+
+        width:60px;
+
+    }
+
+
+
+
+    /* FORMULAIRE */
+
+
+    .search-box{
+
+        flex-direction:column;
+
+        align-items:center;
+
+        margin-top:35px;
+
+    }
+
+
+
+    .search-box input{
+
+        width:100%;
+
+        max-width:330px;
+
+        height:52px;
+
+        font-size:16px;
+
+    }
+
+
+
+    .search-box button{
+
+        width:100%;
+
+        max-width:330px;
+
+        height:52px;
+
+        font-size:17px;
+
+    }
+
+
+
+    .message{
+
+        font-size:16px;
+
+    }
+
+
+
+
+    /* DECOR */
+
+
+    .coin{
+
+        width:70px;
+
+    }
+
+
+
+    .coin1{
+
+        left:-20px;
+
+        top:120px;
+
+    }
+
+
+
+    .coin2{
+
+        right:-20px;
+
+        top:80px;
+
+    }
+
+
+
+    .coin3{
+
+        right:15px;
+
+        bottom:30px;
+
+    }
+
+
+
+
+    /* APPLICATION */
+
+
+    .app-section{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:55px 20px;
+
+        gap:35px;
+
+    }
+
+
+
+    .app-left{
+
+        min-width:auto;
+
+    }
+
+
+
+    .app-left h2{
+
+        font-size:30px;
+
+    }
+
+
+
+    .app-left p{
+
+        font-size:16px;
+
+    }
+
+
+
+    .store-buttons{
+
+        justify-content:center;
+
+    }
+
+
+
+    .store-buttons img{
+
+        height:50px;
+
+    }
+
+
+
+    .app-right{
+
+        min-width:auto;
+
+    }
+
+
+
+    .app-right img{
+
+        width:270px;
+
+    }
+
+
+
+
+    /* FOOTER */
 
 
     .footer{
 
-        padding:60px 20px 25px;
-
-        text-align:center;
+        padding:50px 20px 20px;
 
     }
 
@@ -1343,43 +1268,9 @@ textarea{
 
         grid-template-columns:1fr;
 
+        text-align:center;
+
         gap:35px;
-
-    }
-
-
-
-    .footer-column{
-
-        align-items:center;
-
-    }
-
-
-
-    .footer-logo{
-
-        font-size:30px;
-
-    }
-
-
-
-    .footer-image{
-
-        justify-self:center;
-
-        width:100%;
-
-    }
-
-
-
-    .footer-image img{
-
-        width:300px;
-
-        margin:auto;
 
     }
 
@@ -1407,754 +1298,5 @@ textarea{
 
     }
 
-
-
-    .copyright{
-
-        margin-top:35px;
-
-        font-size:13px;
-
-    }
-
-
-}
-/* =====================================
-   ETAPE 5/5
-   RESPONSIVE FINAL
-===================================== */
-
-
-/* ===========================
-   TABLETTE
-=========================== */
-
-
-@media (max-width:1000px){
-
-
-    body{
-
-        padding-top:75px;
-
-    }
-
-
-
-    .topbar{
-
-        height:75px;
-
-        padding:0 25px;
-
-    }
-
-
-
-    .logo-container h2{
-
-        font-size:20px;
-
-    }
-
-
-
-    .content h1{
-
-        font-size:36px;
-
-    }
-
-
-
-    .search-box input{
-
-        width:350px;
-
-    }
-
-
-}
-
-
-
-
-/* ===========================
-   MOBILE GENERAL
-=========================== */
-
-
-@media(max-width:700px){
-
-
-
-    body{
-
-        padding-top:70px;
-
-    }
-
-
-
-    /* HEADER MOBILE */
-
-    .topbar{
-
-        height:70px;
-
-        padding:0 15px;
-
-    }
-
-
-
-    .logo-container{
-
-        gap:7px;
-
-        justify-content:center;
-
-        flex:1;
-
-    }
-
-
-
-    .logo img{
-
-        width:34px;
-
-        height:34px;
-
-    }
-
-
-
-    .logo-container h2{
-
-        font-size:17px;
-
-    }
-
-
-
-    .header-buttons{
-
-        gap:5px;
-
-    }
-
-
-
-    .header-buttons .login,
-    .header-buttons .signup{
-
-
-        height:34px;
-
-        padding:0 10px;
-
-        font-size:11px;
-
-
-    }
-
-
-
-    .language-select{
-
-        display:none;
-
-    }
-
-
-
-
-    /* MENU MOBILE */
-
-
-    #sidebar{
-
-        width:270px;
-
-    }
-
-
-
-    #sidebar ul li{
-
-        font-size:16px;
-
-    }
-
-
-
-
-    /* TITRES */
-
-    h1{
-
-        font-size:28px;
-
-    }
-
-
-
-    h2{
-
-        font-size:24px;
-
-    }
-
-
-
-    h3{
-
-        font-size:20px;
-
-    }
-
-
-
-
-    /* BLOCS */
-
-    section{
-
-        width:100%;
-
-        overflow:hidden;
-
-    }
-
-
-
-    /* IMAGES */
-
-    img{
-
-        max-width:100%;
-
-        height:auto;
-
-    }
-
-
-
-
-    /* BOUTONS */
-
-    button{
-
-        max-width:340px;
-
-    }
-
-
-
-}
-
-
-
-
-
-/* ===========================
-   PETITS TELEPHONES
-   320px - 480px
-=========================== */
-
-
-@media(max-width:480px){
-
-
-
-    .topbar{
-
-        padding:0 10px;
-
-    }
-
-
-
-    .btn{
-
-        font-size:25px;
-
-    }
-
-
-
-    .logo img{
-
-        width:30px;
-
-        height:30px;
-
-    }
-
-
-
-    .logo-container h2{
-
-        font-size:15px;
-
-    }
-
-
-
-    .header-buttons .login,
-    .header-buttons .signup{
-
-        width:65px;
-
-        padding:0;
-
-        font-size:10px;
-
-    }
-
-
-
-
-    .hero{
-
-        padding:45px 15px;
-
-    }
-
-
-
-    .content h1{
-
-        font-size:25px;
-
-    }
-
-
-
-    .content h2{
-
-        font-size:20px;
-
-    }
-
-
-
-    .content p{
-
-        font-size:14px;
-
-    }
-
-
-
-
-    .search-box input,
-    .search-box button{
-
-        max-width:300px;
-
-    }
-
-
-
-
-    .app-left h2{
-
-        font-size:26px;
-
-    }
-
-
-
-    .store-buttons{
-
-        flex-direction:column;
-
-        align-items:center;
-
-    }
-
-
-
-    .store-buttons img{
-
-        height:45px;
-
-    }
-
-
-
-}
-
-
-
-
-
-/* ===========================
-   TRES PETITS ECRANS
-   320px
-=========================== */
-
-
-@media(max-width:360px){
-
-
-
-    .logo-container h2{
-
-        display:none;
-
-    }
-
-
-
-    .header-buttons .login,
-    .header-buttons .signup{
-
-        width:60px;
-
-        font-size:9px;
-
-    }
-
-
-
-    .content h1{
-
-        font-size:23px;
-
-    }
-
-
-
-    .content h2{
-
-        font-size:18px;
-
-    }
-
-
-
-    .search-box input,
-    .search-box button{
-
-        max-width:270px;
-
-    }
-
-
-
-    .app-right img{
-
-        width:230px;
-
-    }
-
-
-
-}
-
-
-
-/* ===========================
-   SECURITE RESPONSIVE
-=========================== */
-
-
-*{
-
-    max-width:100%;
-
-}
-
-
-
-html,
-body{
-
-    overflow-x:hidden;
-
-}
-
-
-
-input,
-textarea,
-select{
-
-    font-size:16px;
-
-}
-
-
-
-button,
-a{
-
-    -webkit-tap-highlight-color:transparent;
-
-}
-/* =================================
-   AJUSTEMENT TELEPHONE - TEXTES PLUS LISIBLES
-================================= */
-
-@media (max-width:700px){
-
-    .content h1{
-
-        font-size:34px;
-        line-height:1.25;
-
-    }
-
-
-    .content h2{
-
-        font-size:26px;
-
-    }
-
-
-    .content p{
-
-        font-size:17px;
-        line-height:1.7;
-
-    }
-
-
-    .search-box input{
-
-        height:52px;
-        font-size:16px;
-
-    }
-
-
-    .search-box button{
-
-        height:52px;
-        font-size:17px;
-
-    }
-
-
-    .app-left h2{
-
-        font-size:34px;
-
-    }
-
-
-    .app-left p{
-
-        font-size:17px;
-
-    }
-
-
-    .footer-column h3{
-
-        font-size:24px;
-
-    }
-
-
-    .footer-column a{
-
-        font-size:16px;
-
-    }
-
-
-    .footer-text{
-
-        font-size:14px;
-        line-height:1.6;
-
-    }
-
-
-}
-
-/* ==============================
-   HEADER TELEPHONE AJUSTEMENT
-============================== */
-
-@media(max-width:700px){
-
-    .topbar{
-
-        height:70px;
-        padding:0 12px;
-
-    }
-
-
-    .logo-container{
-
-        gap:8px;
-
-    }
-
-
-    .logo img{
-
-        width:38px;
-        height:38px;
-
-    }
-
-
-    .logo-container h2{
-
-        font-size:20px;
-
-    }
-
-
-    .header-buttons{
-
-        gap:8px;
-
-    }
-
-
-    .header-buttons .login,
-    .header-buttons .signup{
-
-        min-width:85px;
-        height:38px;
-        padding:0 8px;
-        font-size:12px;
-
-    }
-
-}
-/* =====================================
-   FIX FINAL TELEPHONE 320px - 480px
-===================================== */
-
-@media(max-width:480px){
-
-    body{
-        padding-top:70px;
-    }
-
-
-    /* HEADER */
-
-    .topbar{
-        height:70px;
-        padding:0 8px;
-    }
-
-
-    .btn{
-        font-size:26px;
-    }
-
-
-    .logo img{
-        width:36px;
-        height:36px;
-    }
-
-
-    .logo-container h2{
-        font-size:18px;
-        display:block;
-    }
-
-
-    .header-buttons{
-        gap:5px;
-    }
-
-
-    .header-buttons .login,
-    .header-buttons .signup{
-
-        width:75px;
-        min-width:75px;
-        height:36px;
-        font-size:11px;
-        padding:0;
-
-    }
-
-
-    /* HERO */
-
-    .hero{
-        padding:55px 15px;
-    }
-
-
-    .content h1{
-
-        font-size:30px;
-        line-height:1.25;
-
-    }
-
-
-    .content h2{
-
-        font-size:23px;
-
-    }
-
-
-    .content p{
-
-        font-size:16px;
-        line-height:1.7;
-
-    }
-
-
-    /* FORMULAIRE */
-
-    .search-box input,
-    .search-box button{
-
-        width:100%;
-        max-width:330px;
-
-    }
-
-
-    /* APPLICATION */
-
-    .app-left h2{
-
-        font-size:30px;
-
-    }
-
-
-    .app-left p{
-
-        font-size:16px;
-
-    }
-
-
-    /* FOOTER */
-
-    .footer-column h3{
-
-        font-size:22px;
-
-    }
-
-
-    .footer-column a{
-
-        font-size:15px;
-
-    }
 
 }
