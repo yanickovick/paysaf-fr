@@ -1244,11 +1244,16 @@ flex-direction:column;
 
 
 
+    @media(max-width:700px){
+
     .app-right img{
-
-        width:270px;
-
+        width:80%;
+        max-width:300px;
+        height:auto;
+        margin:auto;
     }
+
+}
 
 
 
@@ -1281,6 +1286,13 @@ flex-direction:column;
         justify-content:center;
 
     }
+   .footer-image img{
+
+    width:100%;
+    max-width:450px;
+    height:auto;
+
+}
 
 
 
