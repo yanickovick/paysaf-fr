@@ -1895,3 +1895,266 @@ a{
     -webkit-tap-highlight-color:transparent;
 
 }
+/* =================================
+   AJUSTEMENT TELEPHONE - TEXTES PLUS LISIBLES
+================================= */
+
+@media (max-width:700px){
+
+    .content h1{
+
+        font-size:34px;
+        line-height:1.25;
+
+    }
+
+
+    .content h2{
+
+        font-size:26px;
+
+    }
+
+
+    .content p{
+
+        font-size:17px;
+        line-height:1.7;
+
+    }
+
+
+    .search-box input{
+
+        height:52px;
+        font-size:16px;
+
+    }
+
+
+    .search-box button{
+
+        height:52px;
+        font-size:17px;
+
+    }
+
+
+    .app-left h2{
+
+        font-size:34px;
+
+    }
+
+
+    .app-left p{
+
+        font-size:17px;
+
+    }
+
+
+    .footer-column h3{
+
+        font-size:24px;
+
+    }
+
+
+    .footer-column a{
+
+        font-size:16px;
+
+    }
+
+
+    .footer-text{
+
+        font-size:14px;
+        line-height:1.6;
+
+    }
+
+
+}
+
+/* ==============================
+   HEADER TELEPHONE AJUSTEMENT
+============================== */
+
+@media(max-width:700px){
+
+    .topbar{
+
+        height:70px;
+        padding:0 12px;
+
+    }
+
+
+    .logo-container{
+
+        gap:8px;
+
+    }
+
+
+    .logo img{
+
+        width:38px;
+        height:38px;
+
+    }
+
+
+    .logo-container h2{
+
+        font-size:20px;
+
+    }
+
+
+    .header-buttons{
+
+        gap:8px;
+
+    }
+
+
+    .header-buttons .login,
+    .header-buttons .signup{
+
+        min-width:85px;
+        height:38px;
+        padding:0 8px;
+        font-size:12px;
+
+    }
+
+}
+/* =====================================
+   FIX FINAL TELEPHONE 320px - 480px
+===================================== */
+
+@media(max-width:480px){
+
+    body{
+        padding-top:70px;
+    }
+
+
+    /* HEADER */
+
+    .topbar{
+        height:70px;
+        padding:0 8px;
+    }
+
+
+    .btn{
+        font-size:26px;
+    }
+
+
+    .logo img{
+        width:36px;
+        height:36px;
+    }
+
+
+    .logo-container h2{
+        font-size:18px;
+        display:block;
+    }
+
+
+    .header-buttons{
+        gap:5px;
+    }
+
+
+    .header-buttons .login,
+    .header-buttons .signup{
+
+        width:75px;
+        min-width:75px;
+        height:36px;
+        font-size:11px;
+        padding:0;
+
+    }
+
+
+    /* HERO */
+
+    .hero{
+        padding:55px 15px;
+    }
+
+
+    .content h1{
+
+        font-size:30px;
+        line-height:1.25;
+
+    }
+
+
+    .content h2{
+
+        font-size:23px;
+
+    }
+
+
+    .content p{
+
+        font-size:16px;
+        line-height:1.7;
+
+    }
+
+
+    /* FORMULAIRE */
+
+    .search-box input,
+    .search-box button{
+
+        width:100%;
+        max-width:330px;
+
+    }
+
+
+    /* APPLICATION */
+
+    .app-left h2{
+
+        font-size:30px;
+
+    }
+
+
+    .app-left p{
+
+        font-size:16px;
+
+    }
+
+
+    /* FOOTER */
+
+    .footer-column h3{
+
+        font-size:22px;
+
+    }
+
+
+    .footer-column a{
+
+        font-size:15px;
+
+    }
+
+}
