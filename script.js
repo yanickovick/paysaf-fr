@@ -1,31 +1,5 @@
-const openMenu = document.getElementById("openMenu");
-const closeMenu = document.getElementById("closeMenu");
-const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
+console.log("script.js chargé");
 
-
-openMenu.onclick = () => {
-
-    sidebar.classList.add("active");
-    overlay.classList.add("active");
-
-};
-
-
-closeMenu.onclick = () => {
-
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-
-};
-
-
-overlay.onclick = () => {
-
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-
-};
 // Initialisation EmailJS
 emailjs.init("rORVGScs1n94sqOPi");
 
