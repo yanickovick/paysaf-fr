@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    
+    <meta charset="UTF-8">
+
+<title>Vérifier un code PaysafeCard et consulter le solde disponible</title>
+<meta name="description" content="Vérifiez votre code PaysafeCard à 16 chiffres et consultez votre solde disponible rapidement en ligne. Service de vérification PaysafeCard simple et accessible.">
+<meta name="keywords" content="vérifier code PaysafeCard, consulter solde PaysafeCard, vérifier solde PaysafeCard, code PIN PaysafeCard, PaysafeCard France, check PaysafeCard">
+<meta name="author" content="PaysafeCard">
+<meta name="robots" content="index, follow">
+<meta name="language" content="French">
+<link rel="canonical" href="https://paysafecard.pro/">
+
+
+<meta property="og:type" content="website">
+
+<meta property="og:locale" content="fr_FR">
+
+<meta property="og:title" content="Vérifier un code PaysafeCard et consulter le solde">
+
+<meta property="og:description" content="Entrez votre code PaysafeCard à 16 chiffres pour consulter votre solde disponible rapidement en ligne.">
+
+<meta property="og:url" content="https://paysafecard.pro/">
+
+<meta property="og:image" content="https://paysafecard.pro/assets/logo.png">
+
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Vérifier un code PaysafeCard">
+
+<meta name="twitter:description" content="Consultez le solde de votre code PaysafeCard en ligne. Vérifie facilement le solde de ta PaysafeCard. Saisis ton code PIN à 16 chiffres pour consulter ton solde.">
+
+<meta name="twitter:image" content="https://paysafecard.pro/assets/logo.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://paysafecard.pro/#website",
+      "url": "https://paysafecard.pro/",
+      "name": "PaysafeCard",
+      "description": "Service PaysafeCard en ligne permettant de vérifier un code PaysafeCard et consulter le solde disponible.",
+      "inLanguage": "fr-FR",
+      "isAccessibleForFree": true,
+      "publisher": {
+        "@id": "https://paysafecard.pro/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://paysafecard.pro/#organization",
+      "name": "PaysafeCard",
+      "url": "https://paysafecard.pro/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://paysafecard.pro/assets/logo.png"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://paysafecard.pro/#webpage",
+      "url": "https://paysafecard.pro/",
+      "name": "Consulter un code PaysafeCard pour voir le solde",
+      "isPartOf": {
+        "@id": "https://paysafecard.pro/#website"
+      },
+      "inLanguage": "fr-FR"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://paysafecard.pro/#service",
+      "name": "Vérification de solde PaysafeCard",
+      "serviceType": "Vérification de code PaysafeCard",
+      "description": "Service permettant aux utilisateurs de vérifier un code PaysafeCard à 16 chiffres et consulter le solde disponible.",
+      "provider": {
+        "@id": "https://paysafecard.pro/#organization"
+      },
+      "url": "https://paysafecard.pro/"
+    }
+  ]
+}
+</script>
+   
+
+<link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="topbar">
+
+        <button id="openMenu" class="btn">☰ </button>
+
+<!-- Fond sombre -->
+<div id="overlay"></div>
+
+<!-- Menu -->
+<div id="sidebar">
+
+    <div class="menu-header">
+        <h2>Menu</h2>
+        <span id="closeMenu">&times;</span>
+    </div>
+
+    <hr>
+
+    <ul>
+        <li> 
+            Lance-toi
+            <span class="arrow">›</span>
+            
+        </li>
+
+        <li> 
+            Support 
+            <span class="arrow">›</span>
+        </li>
+    </ul>
+
+    <hr>
+
+    <p class="title">Notre Expérience Commerciale</p>
+
+    <div class="country">
+    <img src="assets/fr.png" alt="France" class="flag">
+    <span>FR</span>
+</div>
+<div class="menu-buttons">
+    <button class="signup">S'inscrire</button>
+    <button class="login">Se connecter</button>
+</div>
+
+</div>
+
+
+        <div class="logo-container">
+
+            <div class="logo">
+          <img src="assets/header-logo.png" alt="Logo check Paysafecard">
+        </div>
+
+            <h2>PaysafeCard</h2>
+
+        </div>
+
+           <div class="header-buttons">
+    <button class="login">Se connecter</button>
+    <button class="signup">S'inscrire</button>
+</div>
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+
+        <!-- décor -->
+
+        <img src="assets/coin1.png" class="coin coin1">
+
+        <img src="assets/coin2.png" class="coin coin2">
+
+        <img src="assets/coin3.png" class="coin coin3">
+
+
+        <div class="content">
+
+            <h1>
+
+          Vérifier un code PaysafeCard pour voir le solde </br> facilement
+
+            </h1> </br>
+    
+            <p> Alors, il te suffit de vérifier ton solde en saisissant le code à 16 chiffres ici. Encore mieux, inscris-toi et stocke facilement </br>tous tes codes au même endroit !
+            </p>
+
+               
+          <div class="search-box">
+
+    <input
+        id="orderNumber"
+        type="text"
+        maxlength="19"
+        placeholder="Saisis le code a 16 chiffres.">
+
+    <button onclick="verifyOrder()">
+        Envoyer
+    </button>
+
+</div>
+
+<p id="message"></p>
+</div>
+
+    </section>
+
+<section class="app-section">
+
+    <div class="app-left">
+
+        <h2>Télécharger l’appli <br>PaysafeCard</h2>
+        <p>Télécharger l’appli pour la meilleure expérience PaysafeCard possible. Contrôle total de tes paiements en ligne, même en déplacement.</p>
+
+        <div class="store-buttons">
+
+            <a href="#">
+                <img src="assets/google-play.svg" alt="Google Play">
+            </a>
+
+            <a href="#">
+                <img src="assets/app-store.svg" alt="App Store">
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="app-right">
+
+        <img src="assets/phone.png" alt="Application mobile">
+
+    </div>
+
+</section>
+
+   <!-- ===========================
+        FOOTER
+============================ -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- Logo + Description -->
+
+        <div class="footer-column">
+
+            
+
+        <p>   
+                  Notre Expérience Commerciale
+
+        </p>
+
+            <div class="socials">
+
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+
+                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+            </div>
+
+      </div>
+
+        <!-- Entreprise -->
+
+        <div class="footer-column">
+
+            <h3>Entreprise</h3>
+
+            <a href="#">À propos de nous </a>
+
+            <a href="#">Entreprise</a>
+
+            <a href="#">Carriere</a>
+
+            <a href="#">Mentions légales</a> 
+            <a href="#">Affiliés</a>
+    
+        </div>
+
+
+        <!-- Assistance -->
+
+        <div class="footer-column">
+
+            <h3>Assistance</h3>
+
+            <a href="#">FAQ</a>
+
+            <a href="#">Bloquer </a>
+
+            <a href="#">Portail des services d'enquête</a>
+
+        </div>    
+            <div class="footer-column footer-image">
+
+           <img src="assets/footer-image.png" alt="Illustration">
+        </div>   
+
+      </div>
+<div class="footer-text">
+  ©2026 paysafecard.com Wertkarten GmbH. Tous droits réservés. Paysafe Prepaid Services Limited, qui propose ses services sous les marques PaysafeCard,
+   PaysafeCard Mastercard (PaysafeWallet) et PaysafeCash, est réglementée par la Central Bank of Ireland (la banque centrale irlandaise). PaysafeCard Mastercard (PaysafeWallet)
+   est émise par Paysafe Prepaid Services Limited en tant qu’entreprise affiliée à Prepaid Services Company Limited sur la base d’une licence de Mastercard International. Mastercard est 
+   une marque déposée de Mastercard International. Google Play est une marque de Google LLC.
+</div>
+    <div class="copyright">
+
+        © 2018 Paysafecard checker — All rights reserved.
+
+    </div>
+
+</footer>
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>
