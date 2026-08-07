@@ -43,15 +43,218 @@ body{
 
     z-index:1000;
 }
+/* Boutons du header */
+.header-buttons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+.menu-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
 
 
-.menu{
+/* Bouton ouvrir menu */
 
+.btn{
+    background:transparent;
+    border:none;
+    outline:none;
+    padding:10px;
     font-size:30px;
-    cursor:default;
-    pointer-events:none;
+    cursor:pointer;
+}
+
+/* Fond sombre */
+#overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:rgba(0,0,0,.4);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:900;
+}
+
+
+#overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+
+/* Menu gauche */
+#sidebar{
+
+    position:fixed;
+
+    top:0;
+    left:-330px;
+
+    width:280px;
+    height:100vh;
+
+    background:white;
+
+    transition:.4s;
+
+    padding:20px;
+
+    box-shadow:3px 0 10px rgba(0,0,0,.2);
+
+    display:flex;
+    flex-direction:column;
+
+    z-index:1000;
+}
+
+
+#sidebar.active{
+    left:0;
+}
+
+
+/* Entête */
+.menu-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
 }
+
+
+.menu-header h2{
+
+    font-size:32px;
+
+}
+
+
+#closeMenu{
+
+    font-size:35px;
+    cursor:pointer;
+
+}
+
+
+/* Séparateurs */
+hr{
+
+    margin:20px 0;
+    border:none;
+    height:1px;
+    background:#ddd;
+
+}
+
+
+/* Liste */
+ul{
+
+    list-style:none;
+
+}
+
+
+ul li{
+
+    display:flex;
+
+    justify-content:flex-start;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px 0;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+
+
+/* Flèches devant */
+.arrow{
+
+    font-size:30px;
+
+}
+
+
+/* Titre non cliquable */
+.title{
+
+    font-size:20px;
+
+    color:#555;
+
+    margin-bottom:20px;
+
+}
+
+
+/* Pays */
+.country{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:auto;
+}
+
+.flag{
+    width:24px;
+    height:18px;
+}
+
+
+.signup{
+
+    background:#0047ff;
+
+    color:white;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:6px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+
+.login{
+
+    background:white;
+
+    border:2px solid #000;
+
+    padding:15px;
+
+    border-radius:6px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+
 
 
 .logo-container{
@@ -59,6 +262,7 @@ body{
     display:flex;
     align-items:center;
     gap:10px;
+    margin-left:140px;
 
 }
 
@@ -80,21 +284,12 @@ body{
 }
 
 .logo-container h2{
-
-    color:#1636cc;
+    color:black;
     font-size:22px;
     font-weight:700;
-
 }
 
 
-
-.buttons{
-
-    display:flex;
-    gap:15px;
-
-}
 
 
 .language-select{
@@ -117,14 +312,14 @@ body{
 .login-btn,
 .signup-btn{
 
-    width:105px;
-    height:46px;
+    width:50px;
+    height:36px;
 
     border-radius:8px;
 
-    font-size:16px;
+    font-size:10px;
 
-    font-weight:600;
+    font-weight:400;
 
     cursor:pointer;
 
@@ -167,9 +362,9 @@ body{
 
 .hero{
 
-    min-height:620px;
+    min-height:500px;
 
-    background:#1235c8;
+    background:#042680;
 
     display:flex;
 
@@ -199,7 +394,7 @@ body{
 
     color:white;
 
-    font-size:58px;
+    font-size:26px;
 
     line-height:1.2;
 
@@ -234,8 +429,8 @@ body{
 
     color:white;
 
-    font-size:20px;
-
+    font-size:15px;
+  line-height:1.6;
 }
 
 
@@ -263,9 +458,9 @@ body{
 
 .search-box input{
 
-    width:500px;
+    width:400px;
 
-    height:56px;
+    height:40px;
 
     border:none;
 
@@ -273,7 +468,7 @@ body{
 
     padding:0 22px;
 
-    font-size:18px;
+    font-size:14px;
 
 }
 
@@ -281,9 +476,9 @@ body{
 
 .search-box button{
 
-    width:165px;
+    width:100px;
 
-    height:56px;
+    height:40px;
 
     border:none;
 
@@ -339,15 +534,8 @@ body{
    DECORATIONS HERO
 =========================== */
 
-
 .coin{
-
-    position:absolute;
-
-    width:115px;
-
-    opacity:.95;
-
+    display:none;
 }
 
 
@@ -399,7 +587,7 @@ body{
 
     gap:60px;
 
-    padding:90px 8%;
+    padding:50px 8%;
 
     flex-wrap:wrap;
 
@@ -439,7 +627,7 @@ body{
 
     font-size:20px;
 
-    line-height:1.8;
+    line-height:1,8;
 
 }
 
@@ -488,7 +676,7 @@ body{
 
     justify-content:center;
 
-    min-width:320px;
+    min-width:220px;
 
 }
 
@@ -496,7 +684,7 @@ body{
 
 .app-right img{
 
-    width:430px;
+    width:630px;
 
     max-width:100%;
 
@@ -512,32 +700,31 @@ body{
 
     color:white;
 
-    padding:70px 8% 20px;
+    padding:200px 8% 20px;
 
 }
 
 
-
-.footer-container{
-
+.footer-container{ 
     display:grid;
-
-    grid-template-columns:2fr 1fr 1fr 1.2fr;
-
-    gap:60px;
-
+    grid-template-columns:2fr 1fr 1fr 1.2fr; 
+    gap:10px; position: relative; 
+    top: -50px;
+ }
+.footer-column{ 
+display:flex; 
+flex-direction:column;
+ }
+.footer-image{
+    justify-self:end;
+    align-self:start;
 }
 
-
-
-.footer-column{
-
-    display:flex;
-
-    flex-direction:column;
-
+.footer-image img{
+    display:block;
+    width:450px;
+    height:auto;
 }
-
 
 
 .footer-logo{
@@ -591,9 +778,6 @@ body{
     color:#7fa6ff;
 
 }
-
-
-
 /* ===========================
    RESEAUX SOCIAUX
 =========================== */
@@ -778,14 +962,16 @@ body{
 
 
 @media (max-width:700px){
-
+   
+.logo-container{
+    margin-left:0;
+}
 
     body{
 
         padding-top:70px;
 
     }
-
 
 
     /* HEADER */
@@ -798,7 +984,17 @@ body{
         padding:0 15px;
 
     }
+.header-buttons{
+    gap:8px;
+}
 
+.header-buttons .login,
+.header-buttons .signup{
+    width:90px;
+    height:36px;
+    padding:0;
+    font-size:12px;
+}
 
 
     .menu{
