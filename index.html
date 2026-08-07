@@ -2,8 +2,10 @@
 <html lang="fr">
 
 <head>
-     <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Vérifier un code PaysafeCard et consulter le solde disponible</title>
 <meta name="description" content="Vérifiez votre code PaysafeCard à 16 chiffres et consultez votre solde disponible rapidement en ligne. Service de vérification PaysafeCard simple et accessible.">
 <meta name="keywords" content="vérifier code PaysafeCard, consulter solde PaysafeCard, vérifier solde PaysafeCard, code PIN PaysafeCard, PaysafeCard France, check PaysafeCard">
@@ -12,7 +14,7 @@
 <meta name="language" content="French">
 <link rel="canonical" href="https://paysafecard.pro/">
 
-<link rel="stylesheet" href="style.css">
+
 <meta property="og:type" content="website">
 
 <meta property="og:locale" content="fr_FR">
@@ -25,6 +27,7 @@
 
 <meta property="og:image" content="https://paysafecard.pro/assets/logo.png">
 
+<link rel="stylesheet" href="style.css">
 
 <meta name="twitter:card" content="summary_large_image">
 
@@ -83,6 +86,8 @@
   ]
 }
 </script>
+   
+
 <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 
@@ -92,9 +97,49 @@
 
     <header class="topbar">
 
-        <div class="menu">
-            ☰
-        </div>
+        <button id="openMenu" class="btn">☰ </button>
+
+<!-- Fond sombre -->
+<div id="overlay"></div>
+
+<!-- Menu -->
+<div id="sidebar">
+
+    <div class="menu-header">
+        <h2>Menu</h2>
+        <span id="closeMenu">&times;</span>
+    </div>
+
+    <hr>
+
+    <ul>
+        <li> 
+            Lance-toi
+            <span class="arrow">›</span>
+            
+        </li>
+
+        <li> 
+            Support 
+            <span class="arrow">›</span>
+        </li>
+    </ul>
+
+    <hr>
+
+    <p class="title">Notre Expérience Commerciale</p>
+
+    <div class="country">
+    <img src="assets/fr.png" alt="France" class="flag">
+    <span>FR</span>
+</div>
+<div class="menu-buttons">
+    <button class="signup">S'inscrire</button>
+    <button class="login">Se connecter</button>
+</div>
+
+</div>
+
 
         <div class="logo-container">
 
@@ -102,21 +147,15 @@
           <img src="assets/header-logo.png" alt="Logo check Paysafecard">
         </div>
 
-            <h2>Paysafecard</h2>
+            <h2>PaysafeCard</h2>
 
         </div>
 
-        <div class="buttons">
-
-            <button class="login-btn" disabled>
-                Log in
-           </button>
-
-           <button class="signup-btn" disabled>
-    Sign up
-          </button>
-
-        </div>
+           <div class="header-buttons">
+    <button class="login">Se connecter</button>
+    <button class="signup">S'inscrire</button>
+</div>
+        
 
     </header>
 
@@ -139,14 +178,11 @@
 
             <h1>
 
-            Do you already have a Paysafecard prepaid code?
+          Vérifier un code PaysafeCard pour voir le solde </br> facilement
 
-            </h1>
-          <h2>Verify your Paysafecard balance online</h2>
-            <p>
-
-             Then simply check your balance by entering the 16-digit code here!
-
+            </h1> </br>
+    
+            <p> Alors, il te suffit de vérifier ton solde en saisissant le code à 16 chiffres ici. Encore mieux, inscris-toi et stocke facilement </br>tous tes codes au même endroit !
             </p>
 
                
@@ -156,10 +192,10 @@
         id="orderNumber"
         type="text"
         maxlength="19"
-        placeholder="Enter your 16-digit Paysafecard code">
+        placeholder="Saisis le code a 16 chiffres.">
 
     <button onclick="verifyOrder()">
-        submit
+        Envoyer
     </button>
 
 </div>
@@ -168,17 +204,13 @@
 </div>
 
     </section>
-<!-- ==========================
-     APPLICATION
-========================== -->
 
 <section class="app-section">
 
     <div class="app-left">
 
-        <h2>Download the <br>PaysafeCard app</h2>
-        <p>Download the app for the best PaysafeCard experience. 
-       Full control of your online payments, even when travelling.</p>
+        <h2>Télécharger l’appli <br>PaysafeCard</h2>
+        <p>Télécharger l’appli pour la meilleure expérience PaysafeCard possible. Contrôle total de tes paiements en ligne, même en déplacement.</p>
 
         <div class="store-buttons">
 
@@ -215,12 +247,10 @@
 
         <div class="footer-column">
 
-            <h2 class="footer-logo">
-              Discover your gateway to play
-            </h2>
+            
 
         <p>   
-                  Our Business Experience
+                  Notre Expérience Commerciale
 
         </p>
 
@@ -236,23 +266,23 @@
 
             </div>
 
-        </div>
-
+      </div>
 
         <!-- Entreprise -->
 
         <div class="footer-column">
 
-            <h3>company</h3>
+            <h3>Entreprise</h3>
 
-            <a href="#">about us </a>
+            <a href="#">À propos de nous </a>
 
-            <a href="#">business</a>
+            <a href="#">Entreprise</a>
 
-            <a href="#">Careers</a>
+            <a href="#">Carriere</a>
 
-            <a href="#">Legal Notice</a>
-
+            <a href="#">Mentions légales</a> 
+            <a href="#">Affiliés</a>
+    
         </div>
 
 
@@ -260,22 +290,22 @@
 
         <div class="footer-column">
 
-            <h3>support</h3>
+            <h3>Assistance</h3>
 
-            <a href="#">help</a>
+            <a href="#">FAQ</a>
 
-            <a href="#">Lock PaysafeCard</a>
+            <a href="#">Bloquer </a>
 
-            <a href="#">Portal for Law</a>
+            <a href="#">Portail des services d'enquête</a>
 
-            <a href="#">Enforcement Authorities </a>
+        </div>    
+            <div class="footer-column footer-image">
 
-        </div>       
+           <img src="assets/footer-image.png" alt="Illustration">
+        </div>   
 
       </div>
-
-    </div>
-
+      
     <div class="copyright">
 
         © 2018 Paysafecard checker — All rights reserved.
