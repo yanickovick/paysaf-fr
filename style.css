@@ -945,13 +945,17 @@ flex-direction:column;
         gap:6px;
     }
 
-    .header-buttons .login,
-    .header-buttons .signup{
-        width:70px;
-        height:34px;
-        padding:0;
-        font-size:11px;
-    }
+   .header-buttons .login{
+    width:50px;
+    height:34px;
+    padding:0;
+    font-size:11px;
+}
+
+.header-buttons .signup,
+.header-buttons .signup-btn{
+    display:none;
+}
 
     .language-select{
         display:none;
