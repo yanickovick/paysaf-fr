@@ -139,58 +139,7 @@ body{
 }
 
 
-#closeMenu{
 
-    font-size:35px;
-    cursor:pointer;
-
-}
-
-
-/* Séparateurs */
-hr{
-
-    margin:20px 0;
-    border:none;
-    height:1px;
-    background:#ddd;
-
-}
-
-
-/* Liste */
-ul{
-
-    list-style:none;
-
-}
-
-
-ul li{
-
-    display:flex;
-
-    justify-content:flex-start;
-
-    align-items:center;
-
-    gap:15px;
-
-    padding:18px 0;
-
-    font-size:22px;
-
-    cursor:pointer;
-
-}
-
-
-/* Flèches devant */
-.arrow{
-
-    font-size:30px;
-
-}
 
 
 /* Titre non cliquable */
@@ -202,20 +151,6 @@ ul li{
 
     margin-bottom:20px;
 
-}
-
-
-/* Pays */
-.country{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin-bottom:auto;
-}
-
-.flag{
-    width:24px;
-    height:18px;
 }
 
 
