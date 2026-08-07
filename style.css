@@ -955,8 +955,10 @@ flex-direction:column;
     height: 36px;
     padding: 0;
     font-size: 12px;
+    background: #1d46ff;
+    color: white;
+    border: none;
 }
-
     .language-select{
         display:none;
     }
