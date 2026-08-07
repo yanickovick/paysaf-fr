@@ -945,16 +945,16 @@ flex-direction:column;
         gap:6px;
     }
 
-   .header-buttons .login{
-    width:50px;
-    height:34px;
-    padding:0;
-    font-size:11px;
+  .header-buttons .signup {
+    display: none;
 }
 
-.header-buttons .signup,
-.header-buttons .signup-btn{
-    display:none;
+.header-buttons .login {
+    display: block;
+    width: 90px;
+    height: 36px;
+    padding: 0;
+    font-size: 12px;
 }
 
     .language-select{
