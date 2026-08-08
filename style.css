@@ -471,46 +471,29 @@ ul li{
     font-size:14px;
 
 }
+/* ================================
+BOUTON ENVOYER
+================================ */
 
-
-
-.search-box button{
-
-    width:100px;
-
-    height:40px;
-
-    border:none;
-
-    border-radius:8px;
-
-    background:#3558ff;
-
-    color:white;
-
-    font-size:18px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.3s;
-
+.search-box button:not(#countryButton) {
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background: #3558ff;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
 }
 
-
-
-.search-box button:hover{
-
-    background:#2549ef;
-
+.search-box button:not(#countryButton):hover {
+    background: #2549ef;
 }
 
+ 
 
-
-/* ===========================
-   MESSAGE 
-=========================== */
 
 
 #message {
@@ -618,7 +601,7 @@ ul li{
 
     font-size:20px;
 
-    line-height:1,8;
+    line-height:1.8;
 
 }
 
@@ -1000,25 +983,6 @@ flex-direction:column;
         justify-content:center;
         gap:6px;
     }
-
-    .header-buttons .login{
-    width:70px;
-    height:34px;
-    padding:0;
-    font-size:11px;
-}
-
-.header-buttons .signup,
-.header-buttons .signup-btn {
-display: inline-flex;
-}
-
-.header-buttons .signup {
-color: #0066ff !important;
-}
-
-@media (max-width: 768px) {
-
 .header-buttons .login {
     display: none !important;
 }
@@ -1027,8 +991,7 @@ color: #0066ff !important;
     display: inline-flex !important;
     color: #0066ff !important;
 }
-
-}
+    
 
     /* ===========================
        HERO
@@ -1107,14 +1070,13 @@ color: #0066ff !important;
         text-align:left;
     }
 
-    .search-box button{
-        width:100%;
-        max-width:330px;
-        height:52px;
-        margin:0 auto;
-        font-size:17px;
-    }
-
+    .search-box button:not(#countryButton) {
+    width: 100%;
+    max-width: 330px;
+    height: 52px;
+    margin: 0 auto;
+    font-size: 17px;
+}
     .message{
         width:100%;
         text-align:center;
@@ -1415,4 +1377,63 @@ margin-left: 3px;
 
 .hero {
 overflow: visible;
+}
+#countryButton {
+    background: #d9d9d9 !important;
+    background-color: #d9d9d9 !important;
+    color: #333 !important;
+    border: 1px solid #d0d0d0 !important;
+}
+#countryButton:hover,
+#countryButton:focus,
+#countryButton:active {
+    background: #d9d9d9 !important;
+    background-color: #d9d9d9 !important;
+    color: #333 !important;
+}
+.country-options {
+    background: #fff !important;
+    background-color: #fff !important;
+}
+
+#countryButton img,
+.country-options div img {
+    background: transparent !important;
+}
+/* ===========================
+   BOUTONS HEADER
+=========================== */
+
+.header-buttons .login {
+    background: #fff;
+    border: 2px solid #ddd;
+    color: #000;
+}
+
+.header-buttons .signup {
+    background: #1d46ff;
+    color: #fff;
+    border: none;
+}
+
+
+/* ===========================
+   TELEPHONE
+=========================== */
+
+@media (max-width:700px) {
+
+    .header-buttons .login {
+        display: none !important;
+    }
+
+    .header-buttons .signup {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        background: #1d46ff !important;
+        color: #fff !important;
+        border: none !important;
+    }
+
 }
