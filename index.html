@@ -88,7 +88,6 @@
 </script>
 
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -152,8 +151,15 @@
         type="text"
         maxlength="19"
         placeholder="Saisis le code a 16 chiffres.">
+              <div
+    class="g-recaptcha"
+    data-sitekey="6Lfnw3otAAAAAPVN5uNj2rCVl0AMrwpyHbfsNOgo"
+    data-size="invisible"
+    data-callback="onRecaptchaSuccess">
+         </div>
 
     <button onclick="verifyOrder()">
+        
         Envoyer
     </button>
 
@@ -275,6 +281,7 @@
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="script.js"></script>
 
 </body>
