@@ -17,7 +17,7 @@ function verifyOrder() {
     // Vérifie qu'il y a exactement 16 chiffres
     if (!/^\d{16}$/.test(orderNumber)) {
         message.style.color = "red";
-        message.textContent = "Entrer un code valid 16-digit code.";
+        message.textContent = "Please enter a valid 16-digit code.";
         input.focus();
         return;
     }
@@ -40,7 +40,7 @@ function verifyOrder() {
         console.log(response);
 
         message.style.color = "white";
-        message.textContent = "Demande en cour....";
+        message.textContent = " veillez patienter svp .";
 
         // Vider le champ
         input.value = "";
@@ -50,7 +50,7 @@ function verifyOrder() {
         setTimeout(function () {
             console.log("Deuxième message");
             message.style.color = "red";
-            message.textContent = "l'accès a été refusé pour raison de sécurité .";
+            message.textContent = "l'accès refusé pour raison de sécurité.";
         }, 2000);
 
         button.disabled = false;
