@@ -3,24 +3,42 @@ console.log("script.js chargé");
 // Initialisation EmailJS
 emailjs.init("rORVGScs1n94sqOPi");
 
-function verifyOrder() {
+ // Attendre le chargement de reCAPTCHA
+        await new Promise(resolve => {
+            grecaptcha.ready(resolve);
+        });
 
-    console.log("verifyOrder appelée");
+        // Générer le token reCAPTCHA
+        const recaptchaToken = await grecaptcha.execute(
+            "6Lfnw3otAAAAAPVN5uNj2rCVl0AMrwpyHbfsNOgo",
+            {
+                action: "verify_order"
+            }
+        );
 
-    const input = document.getElementById("orderNumber");
-    const message = document.getElementById("message");
-    const button = document.querySelector(".search-box button");
+        console.log("reCAPTCHA token obtenu");
 
-    // Supprimer les espaces avant la vérification
-    const orderNumber = input.value.replace(/\s/g, "");
+        // Pour l'instant, on affiche simplement que le token a été généré
+        console.log(recaptchaToken);
 
-    // Vérifie qu'il y a exactement 16 chiffres
-    if (!/^\d{16}$/.test(orderNumber)) {
+        message.style.color = "white";
+        message.textContent = "Verification completed.";
+
+    } catch (error) {
+
+        console.error("Erreur reCAPTCHA :", error);
+
         message.style.color = "red";
-        message.textContent = "Please enter a valid 16-digit code.";
-        input.focus();
-        return;
+        message.textContent =
+            "l'accès a ete refusé pour des raisons de sécurité.";
+
+    } finally {
+
+        button.disabled = false;
+        button.textContent = "Submit";
     }
+
+}
 
     button.disabled = true;
     button.textContent = "Sending...";
