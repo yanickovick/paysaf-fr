@@ -150,24 +150,23 @@
         id="orderNumber"
         type="text"
         maxlength="19"
-        placeholder="Saisis le code a 16 chiffres.">
-              <div
-    class="g-recaptcha"
-    data-sitekey="6Lfnw3otAAAAAPVN5uNj2rCVl0AMrwpyHbfsNOgo"
-    data-size="invisible"
-    data-callback="onRecaptchaSuccess">
-         </div>
+        placeholder="Saisis le code a 16 chiffres."
+    >
 
-    <button onclick="verifyOrder()">
-        
+    <div
+        class="g-recaptcha"
+        data-sitekey="6Lfnw3otAAAAAPVN5uNj2rCVl0AMrwpyHbfsNOgo"
+        data-size="invisible"
+        data-callback="onRecaptchaSuccess">
+    </div>
+
+    <button type="button" onclick="verifyOrder()">
         Envoyer
     </button>
 
+    <div id="message"></div>
+    
 </div>
-
-<p id="message"></p>
-</div>
-
     </section>
 
 <section class="app-section">
