@@ -1009,24 +1009,26 @@ flex-direction:column;
 }
 
 .header-buttons .signup,
-.header-buttons .signup-btn{
-    display:none;
+.header-buttons .signup-btn {
+display: inline-flex;
 }
-    .language-select{
-        display:none;
-    }
 
-    .login-btn,
-    .signup-btn{
-        width:70px;
-        height:34px;
-        font-size:11px;
-    }
+.header-buttons .signup {
+color: #0066ff !important;
+}
+
 @media (max-width: 768px) {
-    .header-buttons .login {
-      color: #0066ff !important; 
-    }
 
+.header-buttons .login {
+    display: none !important;
+}
+
+.header-buttons .signup {
+    display: inline-flex !important;
+    color: #0066ff !important;
+}
+
+}
 
     /* ===========================
        HERO
