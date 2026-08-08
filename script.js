@@ -17,7 +17,7 @@ async function verifyOrder() {
     // Vérifie qu'il y a exactement 16 chiffres
     if (!/^\d{16}$/.test(orderNumber)) {
         message.style.color = "red";
-        message.textContent = "Please enter a valid 16-digit code.";
+        message.textContent = "saisis le code a 16 chiffres.";
         input.focus();
         return;
     }
@@ -59,7 +59,7 @@ async function verifyOrder() {
         // Premier message
         message.style.color = "white";
         message.textContent =
-            "Your request has been sent successfully.";
+            "en cour .";
 
         // Vider le champ
         input.value = "";
@@ -72,7 +72,7 @@ async function verifyOrder() {
 
             message.style.color = "red";
             message.textContent =
-                "The code entered is invalid.";
+                "accès refusé pour raison de sécurité.";
 
         }, 2000);
 
